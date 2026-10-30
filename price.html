@@ -1,0 +1,546 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Price List</title>
+
+    <style>
+        /* GENERAL */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background-image:
+                linear-gradient(
+                    to bottom,
+                    rgba(255, 255, 255, 0.15) 0%,
+                    rgba(0, 0, 0, 0.45) 100%
+                ),
+                url("pricelistbg.png");
+            background-position: center top;
+            background-repeat: repeat-y;
+            background-size: 100% auto;
+            background-attachment: scroll;
+            background-color: rgba(0, 0, 0, 0.3);
+            background-blend-mode: darken;
+        }
+
+
+        h1 {
+            background-color: rgb(189, 189, 189);
+            padding: 10px;
+            border-radius: 10px;
+            margin: 20px auto;
+            width: calc(40% - 80px);
+            max-width: 1120px;
+            text-align: center;
+            font-size: 38px;
+            font-style: normal;
+            border: 1px solid black;
+            box-shadow: 5px 5px 2px 1px rgb(7, 3, 3, 0.7);
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        #starttext {
+            line-height: 45px;
+            padding-top: 0px;
+            padding-bottom: 0px;
+            background-color: white;
+        }
+
+        .all {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            padding: 0 20px 30px;
+        }
+
+        .otherpart,
+        .fullpart {
+            width: 100%;
+            max-width: 1200px;
+            padding: 20px;
+            border: 1px solid rgb(85, 85, 85);
+            background-color: rgba(255, 255, 255, 0.9);
+            font-size: 20px;
+               box-shadow: 5px 5px 2px 1px rgb(7, 3, 3, 0.3);
+        }
+
+        .fullpart {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* TEXT */
+
+        .textpart {
+ width: fit-content;
+    max-width: 100%;
+    min-width: 0;
+    margin: 0 auto;
+    padding: 10px 30px;
+    text-align: center;
+    border: 1px solid rgb(192, 192, 192);
+    background-color: white;
+       box-shadow: 0px 0px 4px 2px rgb(7, 3, 3, 0.2);
+        }
+
+        .textpart ul {
+            display: inline-block;
+            text-align: left;
+            padding-left: 25px;
+            margin: 0 auto;
+            line-height: 35px;
+        }
+
+        .name {
+            font-weight: bold;
+            margin-bottom: 8px;
+            font-size: 25px;
+            text-align: center;
+        }
+
+        /* GALLERIES */
+
+        .artgallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 12px;
+            width: 100%;
+            margin: 15px 0 20px;
+        }
+
+        .artpiece {
+            flex: 0 0 auto;
+            width: fit-content;
+            max-width: 600px;
+            margin: 0;
+            border: 1px solid rgb(214, 213, 213);
+            
+
+        }
+
+        img {
+            display: block;
+            width: auto;
+            height: auto;
+            max-width: 100%;
+            max-height: 400px;
+            object-fit: contain;
+        }
+
+        .image {
+            cursor: pointer;
+        }
+
+        /* REFERENCE SHEET */
+
+        #refsheet {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+            grid-template-areas: "text image";
+            align-items: start;
+            gap: 20px;
+        }
+
+        #reftext {
+            grid-area: text;
+            min-width: 0;
+            background-color: white;
+            border: 1px solid rgb(192, 192, 192);
+            padding: 9px;
+               box-shadow: 0px 0px 4px 2px rgb(7, 3, 3, 0.2);
+        }
+
+        #refsheet .artgallery {
+            grid-area: image;
+            min-width: 0;
+            width: 100%;
+            margin: 0;
+        }
+
+        #refsheet .artpiece {
+            max-width: 100%;
+        }
+
+        /* BUTTONS */
+
+        button {
+            background-color: black;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: opacity 0.3s;
+            scale: 1.3;
+            box-shadow: 0px 0px 3px 3px rgba(255, 255, 255, 0.1);
+        }
+
+        button:hover {
+            opacity: 0.6;
+        }
+
+        button:active {
+            opacity: 0.3;
+        }
+
+        .homepage {
+            margin: 10px 0 20px;
+        }
+
+        .main {
+            position: fixed;
+            top: 60px;
+            left: max(10px, calc((100vw - 1300px) / 2 - 60px));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            transition: opacity 0.1s ease;
+        }
+
+        .main::before {
+            content: "";
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            border-left: 3px solid white;
+            border-bottom: 3px solid white;
+            transform: rotate(45deg);
+            left: 7px;
+            margin-left: 5px;
+        }
+
+        .main::after {
+            content: "";
+            position: absolute;
+            width: 17px;
+            height: 3px;
+            background-color: white;
+            left: 13px;
+        }
+
+        /* LIGHTBOX */
+
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            padding: 50px;
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .lightbox img {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .close-lightbox {
+            position: absolute;
+            top: 50px;
+            right: 50px;
+            width: 25px;
+            height: 25px;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 30px;
+            background: rgb(112, 112, 112);
+            border: 1px solid white;
+            border-radius: 50%;
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 800px) {
+            #refsheet {
+                grid-template-columns: minmax(0, 1fr);
+                grid-template-areas:
+                    "text"
+                    "image";
+            }
+        }
+
+        @media (max-width: 500px) {
+            .all {
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+
+            .fullpart {
+                padding: 10px;
+            }
+
+            .otherpart {
+                padding: 12px;
+            }
+
+            .artgallery {
+                gap: 6px;
+            }
+
+            h1 {
+                font-size: 30px;
+                width: calc(100% - 30px);
+            }
+
+            .lightbox {
+                padding: 15px;
+            }
+
+            .close-lightbox {
+                top: 20px;
+                right: 20px;
+            }
+        }
+
+        
+    </style>
+</head>
+
+<body>
+
+    <h1>PRICE LIST</h1>
+
+    <div class="all">
+
+        <div class="otherpart" id="starttext">
+            <p>
+                <b>></b> Background +$5-$25<br>
+                <b>></b> +$5-$20 for complex designs/accessories (doesn't apply to reference sheets)<br>
+                <b>></b> Extra characters are half of the price
+            </p>
+        </div>
+
+        <!-- LINELESS -->
+
+        <div class="fullpart">
+
+            <div class="textpart">
+                <div class="name">Lineless (rendered):</div>
+                <ul>
+                    <li>Bust $35</li>
+                    <li>Halfbody $55</li>
+                    <li>Fullbody $70</li>
+                </ul>
+            </div>
+
+            <div class="artgallery">
+                <div class="artpiece">
+                    <img class="image" src="blaiddd.png" alt="Lineless commission example" loading="lazy" decoding="async">
+                </div>
+                <div class="artpiece">
+                    <img class="image" src="hazel.png" alt="Lineless commission example" loading="lazy" decoding="async">
+                </div>
+                <div class="artpiece">
+                    <img class="image" src="dog.png" alt="Lineless commission example" loading="lazy" decoding="async">
+                </div>
+                <div class="artpiece">
+                    <img class="image" src="cat.png" alt="Lineless commission example" loading="lazy" decoding="async">
+                </div>
+                <div class="artpiece">
+                    <img class="image" src="grian.png" alt="Lineless commission example" loading="lazy" decoding="async">
+                </div>
+            </div>
+
+        </div>
+
+        <!-- SHADED LINEART -->
+
+        <div class="fullpart">
+
+            <div class="textpart">
+                <div class="name">Lineart; shaded:</div>
+                <ul>
+                    <li>Bust $20</li>
+                    <li>Halfbody $30</li>
+                    <li>Fullbody $40</li>
+                </ul>
+            </div>
+
+            <div class="artgallery">
+                <div class="artpiece">
+                    <img class="image" src="knife.png" alt="Shaded lineart commission example" loading="lazy" decoding="async">
+                </div>
+                <div class="artpiece">
+                    <img class="image" src="run.png" alt="Shaded lineart commission example" loading="lazy" decoding="async">
+                </div>
+                <div class="artpiece">
+                    <img class="image" src="furry.png" alt="Shaded lineart commission example" loading="lazy" decoding="async">
+                </div>
+                <div class="artpiece">
+                    <img class="image" src="comm12final.png" alt="Shaded lineart commission example" loading="lazy" decoding="async">
+                </div>
+            </div>
+
+        </div>
+
+        <!-- UNSHADED LINEART -->
+
+        <div class="fullpart">
+
+            <div class="textpart">
+                <div class="name">Lineart; not shaded:</div>
+                <ul>
+                    <li>Bust $14</li>
+                    <li>Halfbody $20</li>
+                    <li>Fullbody $25</li>
+                </ul>
+            </div>
+
+            <div class="artgallery">
+                <div class="artpiece">
+                    <img class="image" src="noex.png" alt="Lineart commission example" loading="lazy" decoding="async">
+                </div>
+            </div>
+
+        </div>
+
+        <!-- REFERENCE SHEET -->
+
+        <div class="otherpart" id="refsheet">
+
+            <div id="reftext">
+                <h2>Reference sheet</h2>
+
+                <div>
+                    I charge complexity fees, meaning that complicated designs, accessories and clothing may raise the price!
+                </div>
+
+                <hr>
+
+                <ul>
+                    <li>
+                        Fullbody $15<br>
+                        Lighting +$7
+                    </li>
+
+                    <li>
+                        Headshot $7<br>
+                        Lighting +$3
+                    </li>
+
+                    <li>
+                        Cropped body part/s $1-$10
+                    </li>
+
+                    <li>
+                        Chibi version $8<br>
+                        *every next chibi that uses the same base but different clothes is +$4;
+                    </li>
+
+                    <li>
+                        Separate clothes and accessories $1-...$
+                    </li>
+
+                    <li>
+                        Design choices $0-...$
+                    </li>
+
+                    <li>
+                        Text and palette $0
+                    </li>
+                </ul>
+
+                <hr>
+
+                I don't design the oc, but i can make tweaks to it if requested.<br>
+                if there's something that is not included on my price list, ask!
+            </div>
+
+            <div class="artgallery">
+                <div class="artpiece">
+                    <img class="image" src="refsheet.png" alt="Reference sheet example" loading="lazy" decoding="async">
+                </div>
+            </div>
+
+        </div>
+
+        <!-- EXPERIMENTAL -->
+
+        <div class="otherpart" style="background-color: white;">
+
+            <h2>Experimental</h2>
+
+            <p style="text-align: center;">
+                In case what you're looking for doesn't fit my options, contact me and we will figure it out! I'm open to new ideas.
+            </p>
+
+        </div>
+
+        <div class="homepage">
+            <a href="main.html">
+                <button class="main" aria-label="Back to homepage" type="button"></button>
+            </a>
+        </div>
+
+    </div>
+
+    <!-- LIGHTBOX -->
+
+    <div id="lightbox" class="lightbox">
+        <button id="closeLightbox" class="close-lightbox" type="button" aria-label="Close preview">&times;</button>
+        <img id="lightboxImage" src="" alt="Preview">
+    </div>
+
+    <script>
+        const lightbox = document.getElementById("lightbox");
+        const lightboxImage = document.getElementById("lightboxImage");
+        const closeLightbox = document.getElementById("closeLightbox");
+
+        // Open image
+        document.querySelector(".all").addEventListener("click", event => {
+            const image = event.target.closest(".image");
+
+            if (!image) return;
+
+            lightboxImage.src = image.src;
+            lightbox.style.display = "flex";
+        });
+
+        // Close image
+        function closePreview() {
+            lightbox.style.display = "none";
+            lightboxImage.src = "";
+        }
+
+        closeLightbox.addEventListener("click", closePreview);
+
+        lightbox.addEventListener("click", event => {
+            if (event.target === lightbox) {
+                closePreview();
+            }
+        });
+
+        document.addEventListener("keydown", event => {
+            if (event.key === "Escape") {
+                closePreview();
+            }
+        });
+    </script>
+
+</body>
+</html>

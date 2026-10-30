@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>Price List</title>
+
+    <style>
+html,
+body {
+    overflow-y: hidden;
+}
+        body{
+background-image: url("bgtos.png");
+    background-color: rgba(0, 0, 0, 0.3);
+    background-blend-mode: darken;
+
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: auto;
+
+    margin: 0;
+    min-height: 100vh;
+    background-position: center -150px;}
+    
+
+        .text{ 
+         display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    max-width: 1200px;
+    box-sizing: border-box;
+
+    margin: 5vw auto 0;
+    padding: 20px;
+    border: 1px solid black;
+            background-color: rgba(255, 255, 255, 0.9);
+
+        }
+
+        h1{
+            background-color: rgb(189, 189, 189);
+            padding: 10px;
+            width: fit-content;
+            border-radius: 10px;
+
+        }
+
+        ul{
+            font-size: 17px;
+            font-weight: 700;
+
+        }
+        
+
+    button{
+			background-color: rgb(0, 0, 0);
+			color:white;
+			border: none;
+			padding: 10px;
+			border-radius: 20px;
+			cursor: pointer;
+			transition:opacity 0.4s, padding 0.2s;
+			box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+			scale: 1.3;
+            margin-top: 3vw;
+		}
+
+		button:hover{
+			opacity:0.6;
+			padding-left: 15px;
+			padding-right: 15px;
+		}
+
+		button:active{
+			opacity:0.3;
+		}
+
+        #dragon {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 410px;
+    height: auto;
+    z-index: 10;
+    pointer-events: none;
+}
+
+
+        </style>
+
+	</head>
+<body>
+    <div class="text">
+<h1>By commissioning me, you agree to my Terms of Service.</h1>
+<hr width=50% >
+<ul>
+<li>Payment is made after the sketch is approved, before I continue with the final piece.</li>
+<li>You receive the right to use the artwork only for personal, non-commercial purposes (avatars, banners, wallpapers, sharing online, etc).</li>
+<li>I may post the artwork on social media and use it for art examples and self-promotion. If you would like your commission to remain private, let me know in advance.</li>
+<li>Do not remove or edit out my watermark.</li>
+<li> Major changes (pose, composition, etc) must be requested during the sketch stage.</li>
+<li>Excessive changes at the final stage may result in additional fees.</li>
+<li>I have the right to decline your commission request without explanation or cancel the commission and issue a full refund for any reason, such as inability to complete the work.</li>
+<li> Rude or disrespectful behavior will result in cancellation of the commission without refund.</li>
+<li>The artwork will be completed within two months from payment, though typically sooner(1-2 weeks).</li>
+<li>Incase I couldn't finish your commission in time, you may demand a refund. </li>   
+</ul>
+<div><a href="main.html"><button class="main">Homepage</button></a></div>
+</div>
+
+<img src="dragon.png" id="dragon" alt="">
+
+
+
+
+
+
+
+<script>
+const dragon = document.getElementById("dragon");
+const text = document.querySelector(".text");
+const list = text.querySelector("ul");
+const elements = list.querySelectorAll("li");
+
+function updateScroll() {
+    const canScroll = dragon.style.position === "absolute";
+
+    document.documentElement.style.overflowY = canScroll ? "auto" : "hidden";
+    document.body.style.overflowY = canScroll ? "auto" : "hidden";
+}
+
+function checkDragon() {
+    dragon.style.position = "fixed";
+    dragon.style.left = "0";
+    dragon.style.bottom = "0";
+    dragon.style.top = "auto";
+
+    requestAnimationFrame(() => {
+        const dragonRect = dragon.getBoundingClientRect();
+        let overlaps = false;
+
+        elements.forEach(element => {
+            const range = document.createRange();
+            range.selectNodeContents(element);
+
+            for (const rect of range.getClientRects()) {
+                if (
+                    dragonRect.left < rect.right &&
+                    dragonRect.right > rect.left &&
+                    dragonRect.top < rect.bottom &&
+                    dragonRect.bottom > rect.top
+                ) {
+                    overlaps = true;
+                    break;
+                }
+            }
+        });
+
+        if (overlaps) {
+            dragon.style.position = "absolute";
+            dragon.style.top =
+                (list.getBoundingClientRect().bottom + window.scrollY + 10) + "px";
+            dragon.style.bottom = "auto";
+        }
+
+        updateScroll();
+    });
+}
+
+window.addEventListener("load", checkDragon);
+window.addEventListener("resize", checkDragon);
+</script>
+
+
+
+
+
+
+
+</body>
+
+
+</html>
