@@ -1,50 +1,60 @@
 <!DOCTYPE html>
 <html>
-	<head>
-	<title>Price List</title>
-<meta name="color-scheme" content="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light">
+    <title>Price List</title>
+
     <style>
-html,
-body {
-	color-scheme: only light;
-    overflow-y: hidden;
-}
-        body{
-    forced-color-adjust: none;
-background-image: url("bgtos.png");
-    background-color: rgba(0, 0, 0, 0.3);
-    background-blend-mode: darken;
-
-    background-repeat: no-repeat;
-    background-position: top center;
-    background-size: auto;
-
-    margin: 0;
-    min-height: 100vh;
-    background-position: center -150px;}
-    
-
-        .text{ 
-         display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 90%;
-    max-width: 1200px;
-    box-sizing: border-box;
-
-    margin: 5vw auto 0;
-    padding: 20px;
-    border: 1px solid black;
-            background-color: rgba(255, 255, 255, 0.9);
-
+        :root {
+            color-scheme: only light;
+            forced-color-adjust: none;
         }
 
-        h1{
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            color-scheme: only light;
+            forced-color-adjust: none;
+            color: black;
+            overflow-y: hidden;
+        }
+
+        body {
+            background-image: url("bgtos.png");
+            background-color: rgba(0, 0, 0, 0.3);
+            background-blend-mode: darken;
+            background-repeat: no-repeat;
+            background-position: center -150px;
+            background-size: auto;
+            margin: 0;
+            min-height: 100vh;
+        }
+
+        .text {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 90%;
+            max-width: 1200px;
+            box-sizing: border-box;
+            margin: 5vw auto 0;
+            padding: 20px;
+            border: 1px solid black;
+            background-color: rgba(255, 255, 255, 0.9);
+            color: black;
+        }
+
+        h1 {
             background-color: rgb(189, 189, 189);
+            color: black;
             padding: 10px;
             width: fit-content;
             border-radius: 10px;
-
         }
 
         ul{
