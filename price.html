@@ -125,9 +125,14 @@
 
         .custom-price {
             font-size: 32px;
-            font-weight: bold;
+            font-weight: 600;
             text-align: center;
-            margin: 0 0 15px;
+            margin: 0 0 10px;
+        }
+
+        .price {
+            font-size: 24px;
+            font-weight: 600;
         }
 
         .custom-info {
@@ -364,7 +369,7 @@
         <div class="otherpart" id="starttext">
             <p>
                 <b>></b> <b>Payment is done via paypal</b><br>
-                <b>></b> Simple backgrounds(pattern, gradient...) are free, environmental and more complex backgrounds may add $5-$40 depending on complexity<br>
+                <b>></b> Simple backgrounds(pattern, gradient...) are free, environmental and more complex backgrounds may add <span class="price">$5-$40</span> depending on complexity<br>
                 <b>></b> Complicated designs may add a fee<br>
                 <b>></b> Extra characters are 50% off<br>
             </p>
@@ -375,9 +380,9 @@
             <div class="textpart">
                 <div class="name">Lineless (rendered):</div>
                 <ul>
-                    <li>Bust $35</li>
-                    <li>Halfbody $55</li>
-                    <li>Fullbody $70</li>
+                    <li>Bust <span class="price">$35</span></li>
+                    <li>Halfbody <span class="price">$55</span></li>
+                    <li>Fullbody <span class="price">$70</span></li>
                 </ul>
             </div>
 
@@ -406,9 +411,9 @@
             <div class="textpart">
                 <div class="name">Lineart; shaded:</div>
                 <ul>
-                    <li>Bust $20</li>
-                    <li>Halfbody $30</li>
-                    <li>Fullbody $40</li>
+                    <li>Bust <span class="price">$20</span></li>
+                    <li>Halfbody <span class="price">$30</span></li>
+                    <li>Fullbody <span class="price">$40</span></li>
                 </ul>
             </div>
 
@@ -434,9 +439,9 @@
             <div class="textpart">
                 <div class="name">Lineart; not shaded:</div>
                 <ul>
-                    <li>Bust $14</li>
-                    <li>Halfbody $20</li>
-                    <li>Fullbody $25</li>
+                    <li>Bust <span class="price">$14</span></li>
+                    <li>Halfbody <span class="price">$20</span></li>
+                    <li>Fullbody <span class="price">$25</span></li>
                 </ul>
             </div>
 
@@ -460,10 +465,11 @@
                 <div class="custom-info">
                     Price is based on complexity:
                     <ul>
-                        <li>Simple designs $35-$40</li>
-                        <li>Detailed designs $40-$55</li>
-                        <li>Complex designs $55-$80</li>
+                        <li>Simple designs <span class="price">$35-$40</span></li>
+                        <li>Detailed designs <span class="price">$40-$55</span></li>
+                        <li>Complex designs <span class="price">$55-$80</span></li>
                     </ul>
+                   
                 </div>
             </div>
 
@@ -475,10 +481,8 @@
                     <img class="image" src="adopt 2.png" alt="Custom design example" loading="lazy" decoding="async">
                 </div>
             </div>
-
-            <div class="custom-note">
-                For reference sheets: first fullbody is the price of the custom, everything else corresponds to reference sheet prices.
-            </div>
+             <hr>
+                    For reference sheets: first fullbody is the price of the custom, everything else corresponds to reference sheet prices.
 
         </div>
 
@@ -495,34 +499,34 @@
 
                 <ul>
                     <li>
-                        Fullbody $15<br>
-                        Lighting +$7
+                        Fullbody <span class="price">$15</span><br>
+                        Lighting <span class="price">+$7</span>
                     </li>
 
                     <li>
-                        Headshot $7<br>
-                        Lighting +$3
+                        Headshot <span class="price">$7</span><br>
+                        Lighting <span class="price">+$3</span>
                     </li>
 
                     <li>
-                        Cropped body part/s $1-$10
+                        Cropped body part/s <span class="price">$1-$10</span>
                     </li>
 
                     <li>
-                        Chibi version $8<br>
-                        *every next chibi that uses the same base but different clothes is +$4;
+                        Chibi version <span class="price">$8</span><br>
+                        *every next chibi that uses the same base but different clothes is <span class="price">+$4</span>;
                     </li>
 
                     <li>
-                        Separate clothes and accessories $1-...$
+                        Separate clothes and accessories <span class="price">$1-...$</span>
                     </li>
 
                     <li>
-                        Design choices $0-...$
+                        Design choices <span class="price">$0-...$</span>
                     </li>
 
                     <li>
-                        Text and palette $0
+                        Text and palette <span class="price">$0</span>
                     </li>
                 </ul>
 
