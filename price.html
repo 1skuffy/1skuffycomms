@@ -135,6 +135,18 @@
             font-weight: 600;
         }
 
+        /* Reference sheet prices: same size as the surrounding text, only bolder. */
+        #reftext .price {
+            font-size: inherit;
+            font-weight: 600;
+        }
+
+        /* Keep the existing horizontal-rule appearance, but make it span the flex section. */
+        .fullpart > hr {
+            width: 100%;
+            align-self: stretch;
+        }
+
         .custom-info {
             text-align: center;
             line-height: 1.5;
@@ -379,6 +391,7 @@
 
             <div class="textpart">
                 <div class="name">Lineless (rendered):</div>
+                <hr>
                 <ul>
                     <li>Bust <span class="price">$35</span></li>
                     <li>Halfbody <span class="price">$55</span></li>
@@ -410,6 +423,7 @@
 
             <div class="textpart">
                 <div class="name">Lineart; shaded:</div>
+                  <hr>
                 <ul>
                     <li>Bust <span class="price">$20</span></li>
                     <li>Halfbody <span class="price">$30</span></li>
@@ -438,6 +452,7 @@
 
             <div class="textpart">
                 <div class="name">Lineart; not shaded:</div>
+                  <hr>
                 <ul>
                     <li>Bust <span class="price">$14</span></li>
                     <li>Halfbody <span class="price">$20</span></li>
@@ -461,7 +476,6 @@
             <div class="textpart">
                 <div class="name">Customs:</div>
                 <p class="custom-price">$35-$80</p>
-
                 <div class="custom-info">
                     Price is based on complexity:
                     <ul>
@@ -481,8 +495,9 @@
                     <img class="image" src="adopt 2.png" alt="Custom design example" loading="lazy" decoding="async">
                 </div>
             </div>
-             <hr>
-                    For reference sheets: first fullbody is the price of the custom, everything else corresponds to reference sheet prices.
+
+            <hr>
+            <p class="custom-note">For reference sheets: first fullbody is the price of the custom, everything else corresponds to reference sheet prices.</p>
 
         </div>
 
