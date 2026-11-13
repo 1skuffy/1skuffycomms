@@ -186,11 +186,13 @@ hr{
 
 		}
 
-		@media (max-width: 600px) {
+
+@media (max-width: 600px) {
 
     body {
         background-size: auto 100vh;
         background-position: center top;
+        background-attachment: scroll;
     }
 
     .header {
@@ -198,17 +200,18 @@ hr{
         left: auto;
         transform: none;
 
-        width: 90%;
-        max-width: 350px;
+        width: 94%;
+        max-width: none;
+        box-sizing: border-box;
         margin: 100px auto 30px;
-        padding: 20px 10px;
+        padding: 30px 20px;
     }
 
     .message {
         position: relative;
         top: auto;
         left: auto;
-        width: 85%;
+        width: 90%;
         margin: 20px auto;
     }
 
@@ -216,13 +219,21 @@ hr{
         padding: 15px;
     }
 
+    .clouditem {
+        font-size: 17px;
+    }
+
     .normalcat {
         width: 40%;
     }
 
     .status {
-        font-size: 19px;
-        line-height: 30px;
+        font-size: 21px;
+        line-height: 32px;
+    }
+
+    h1 {
+        font-size: 27px;
     }
 
     .contact {
@@ -231,6 +242,7 @@ hr{
         flex-direction: row;
         justify-content: center;
         margin-top: 25px;
+        gap: 20px;
     }
 
     .web {
@@ -241,7 +253,12 @@ hr{
     .tos {
         margin-left: 5px;
     }
+
+    button {
+        scale: 1.1;
+    }
 }
+
 
 		</style>
 		
